@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import styles from "./CharactersPage.module.less";
-import { RICK_MORTY_API_URL } from "../../api/api";
 import { QueryKeys } from "../../constants/queryKeys";
+import { RICK_MORTY_API_URL } from "../../api/api";
 
 export const CharactersPage = () => {
   const { data } = useQuery({
