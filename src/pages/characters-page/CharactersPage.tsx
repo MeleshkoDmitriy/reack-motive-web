@@ -1,19 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
 import styles from "./CharactersPage.module.less";
-import { QueryKeys } from "../../constants/queryKeys";
-import { RICK_MORTY_API_URL } from "../../api/api";
-import { ListFlex } from "../../components/lists/list-flex/ListFlex";
+import { useCharacters } from "../../hooks/useCharacters";
+import { List, Filter } from "../../components";
 
 export const CharactersPage = () => {
-  const { data } = useQuery({
-    queryKey: [QueryKeys.CHARACTERS],
-    queryFn: () => fetch(RICK_MORTY_API_URL).then((res) => res.json()),
-  });
+  const { data } = useCharacters();
 
   console.log("data", data);
-  return (<div className={styles.page}>
-    {data && (
-      <ListFlex entities={data.results} />
-    )}
-  </div>);
+
+  return (
+    <div className={styles.page}>
+      <Filter variant="default" />
+      {data && <List variant="flex" entities={data.results} />}
+    </div>
+  );
 };

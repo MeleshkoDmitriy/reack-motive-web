@@ -1,7 +1,7 @@
 import { TCharacter } from "@/reack-motive-web/src/types/CharacterTypes";
 import styles from "./ListGrid.module.less";
 import { FC } from "react";
-import { Card } from "../../cards/Card";
+import { Card } from "../../../components";
 
 interface ListGridProps {
   entities: TCharacter[];
