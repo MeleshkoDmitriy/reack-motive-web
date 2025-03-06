@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.66.9",
+    "clsx": "^2.1.1",
     "less": "^4.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^6.29.0",
     "vite-tsconfig-paths": "^5.1.4"
   },

@@ -1,0 +1,24 @@
+@import '../../../../../styles/index.less';
+
+.wrapper {
+
+  .option {
+    display: block;
+    color: #colors[white];
+    font-size: #fontSizes[f16];
+    transition: #transitions[fast];
+    background-color: #colors[primary];
+    border-radius: #borderRadius[r10];
+    padding: 5px;
+    width: 100%;
+
+    &.selected {
+      background-color: #colors[secondary];
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #colors[secondary];
+    }
+  }
+}
