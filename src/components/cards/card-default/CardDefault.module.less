@@ -1,30 +1,50 @@
 @import '../../../styles/index.less';
 
 .card {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  color: #colors[primary];
+  background-color: #colors[secondaryLight];
+  border-radius: #borderRadius[r20];
+  padding: 20px;
 
   .header {
 
     .title {
-
+      font-size: #fontSizes[f30];
+      font-weight: bold;
+      text-transform: uppercase;
 
     }
   }
 
 
   .body {
+    display: flex;
+    gap: 20px;
 
     .imageWrapper {
-      width: 300px;
+      width: 150px;
       aspect-ratio: 1 / 1;
       overflow: hidden;
+      border-radius: #borderRadius[rCircle];
 
       .image {
         width: 100%;
-        height: 200px;
+        height: auto;
         object-fit: cover;
+      }
+    }
+
+    .characterInfo {
+
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: #fontSizes[f16];
       }
     }
   }

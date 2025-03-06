@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import { TextInput, SelectInput } from "../../../components";
 import styles from "./FilterDefault.module.less";
+import { genderOptions, speciesOptions, statusOptions } from "@/reack-motive-web/src/constants/options";
 
-const options = ["1vfvfgvfvffvfv", "2", "3", "4"];
 
 export const FilterDefault = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -30,7 +30,26 @@ export const FilterDefault = () => {
     <div className={styles.wrapper}>
       <TextInput value={searchValue} onChange={handleSearchChange} />
       <SelectInput
-        options={options}
+        placeholder="Select gender"
+        options={genderOptions}
+        selectedValue={selectedValue}
+        handleSelectChange={handleSelectChange}
+        handleShowDropdown={handleShowDropdown}
+        isDropdownShown={isDropdownShown}
+        handleDropdownHide={handleDropdownHide}
+      />
+      <SelectInput
+        placeholder="Select status"
+        options={statusOptions}
+        selectedValue={selectedValue}
+        handleSelectChange={handleSelectChange}
+        handleShowDropdown={handleShowDropdown}
+        isDropdownShown={isDropdownShown}
+        handleDropdownHide={handleDropdownHide}
+      />
+      <SelectInput
+        placeholder="Select species"
+        options={speciesOptions}
         selectedValue={selectedValue}
         handleSelectChange={handleSelectChange}
         handleShowDropdown={handleShowDropdown}

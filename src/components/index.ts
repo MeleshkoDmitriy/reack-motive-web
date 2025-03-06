@@ -10,3 +10,6 @@ export { Filter } from "./filters/Filter";
 // shared
 export { TextInput } from "./shared/inputs/text-input/TextInput";
 export { SelectInput } from "./shared/inputs/select-input/SelectInput";
+
+// other
+export { Indicator } from "./indicator/Indicator";

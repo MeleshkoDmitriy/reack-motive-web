@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { FilterDefault } from "./filter-default/FilterDefault";
+import styles from "./Filter.module.less";
 
-type TFilterVariant = "default" | "favorite" ;
+type TFilterVariant = "default" | "favorite";
 
 interface FilterProps {
   variant: TFilterVariant;
@@ -9,8 +10,19 @@ interface FilterProps {
 
 export const Filter: FC<FilterProps> = ({ variant }) => {
   switch (variant) {
-    case "default": return <FilterDefault />;
-    case "favorite": return <h1>Filter Favs</h1>;
-    default: return null;
+    case "default":
+      return (
+        <div className={styles.wrapper}>
+          <FilterDefault />
+        </div>
+      );
+    case "favorite":
+      return (
+        <div className={styles.wrapper}>
+          <h1>Filter Favs</h1>
+        </div>
+      );
+    default:
+      return null;
   }
-}
+};

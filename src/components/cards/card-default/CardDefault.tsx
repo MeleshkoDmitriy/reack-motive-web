@@ -1,6 +1,7 @@
 import { TCharacter } from "@/reack-motive-web/src/types/CharacterTypes";
 import { FC } from "react";
 import styles from "./CardDefault.module.less";
+import { Indicator } from "../../../components";
 
 interface CardDefaultProps {
   character: TCharacter;
@@ -22,9 +23,18 @@ export const CardDefault: FC<CardDefaultProps> = ({ character }) => {
           />
         </div>
         <div className={styles.characterInfo}>
-          <p>Status: {character.status}</p>
-          <p>Species: {character.species}</p>
-          <p>Origin: {character.gender}</p>
+          <p className={styles.info}>
+            <Indicator info={character.status} />
+            <span>{character.status}</span>
+          </p>
+          <p className={styles.info}>
+            <Indicator info={character.species} />
+            <span>{character.species}</span>
+          </p>
+          <p className={styles.info}>
+            <Indicator info={character.gender} />
+            <span>{character.gender}</span>
+          </p>
         </div>
       </div>
       <div className={styles.footer}>
