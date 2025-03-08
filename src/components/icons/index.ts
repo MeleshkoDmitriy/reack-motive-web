@@ -6,6 +6,9 @@ import { SiReactrouter as ReactRouterIcon } from "react-icons/si";
 import { SiReactquery as TanStackQuery } from "react-icons/si";
 import { GoHeart as HeartOutline } from "react-icons/go";
 import { GoHeartFill as HeartFill } from "react-icons/go";
+import { CgSpinner as SpinnerIcon } from "react-icons/cg";
+import { SlArrowLeft as ArrowLeft } from "react-icons/sl";
+import { SlArrowRight as ArrowRight } from "react-icons/sl";
 
 export {
   SearchIcon,
@@ -16,4 +19,7 @@ export {
   TanStackQuery,
   HeartOutline,
   HeartFill,
+  SpinnerIcon,
+  ArrowLeft,
+  ArrowRight,
 };
