@@ -4,6 +4,8 @@ import { SlArrowDown as DropdownArrow } from "react-icons/sl";
 import { FaReact as ReactIcon } from "react-icons/fa";
 import { SiReactrouter as ReactRouterIcon } from "react-icons/si";
 import { SiReactquery as TanStackQuery } from "react-icons/si";
+import { GoHeart as HeartOutline } from "react-icons/go";
+import { GoHeartFill as HeartFill } from "react-icons/go";
 
 export {
   SearchIcon,
@@ -12,4 +14,6 @@ export {
   ReactIcon,
   ReactRouterIcon,
   TanStackQuery,
+  HeartOutline,
+  HeartFill,
 };

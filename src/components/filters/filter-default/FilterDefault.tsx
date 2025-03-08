@@ -1,60 +1,95 @@
 import { useCallback, useState } from "react";
 import { TextInput, SelectInput } from "../../../components";
 import styles from "./FilterDefault.module.less";
-import { genderOptions, speciesOptions, statusOptions } from "@/reack-motive-web/src/constants/options";
-
+import {
+  genderOptions,
+  speciesOptions,
+  statusOptions,
+} from "@/reack-motive-web/src/constants/options";
 
 export const FilterDefault = () => {
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState<string>("");
-  const [isDropdownShown, setIsDropdownShown] = useState<boolean>(false);
+  const [filters, setFilters] = useState({
+    search: "",
+    gender: "",
+    status: "",
+    species: "",
+  });
+
+  const [dropdownVisibility, setDropdownVisibility] = useState({
+    gender: false,
+    status: false,
+    species: false,
+  });
+
+  const handleFilterChange = useCallback(
+    (key: keyof typeof filters, value: string) => {
+      setFilters((prev) => ({ ...prev, [key]: value }));
+      setDropdownVisibility((prev) => ({ ...prev, [key]: false }));
+    },
+    []
+  );
 
   const handleSearchChange = (value: string) => {
-    setSearchValue(value);
+    setFilters((prev) => ({ ...prev, search: value }));
   };
 
-  const handleSelectChange = useCallback((value: string) => {
-    setSelectedValue(value);
-    setIsDropdownShown(false);
-  }, []);
-
-  const handleShowDropdown = () => {
-    setIsDropdownShown(true);
+  const handleShowGenderDropdown = () => {
+    setDropdownVisibility((prev) => ({ ...prev, gender: true }));
   };
 
-  const handleDropdownHide = () => {
-    setIsDropdownShown(false);
+  const handleHideGenderDropdown = () => {
+    setDropdownVisibility((prev) => ({ ...prev, gender: false }));
+  };
+
+  const handleShowStatusDropdown = () => {
+    setDropdownVisibility((prev) => ({ ...prev, status: true }));
+  };
+
+  const handleHideStatusDropdown = () => {
+    setDropdownVisibility((prev) => ({ ...prev, status: false }));
+  };
+
+  const handleShowSpeciesDropdown = () => {
+    setDropdownVisibility((prev) => ({ ...prev, species: true }));
+  };
+
+  const handleHideSpeciesDropdown = () => {
+    setDropdownVisibility((prev) => ({ ...prev, species: false }));
   };
 
   return (
     <div className={styles.wrapper}>
-      <TextInput value={searchValue} onChange={handleSearchChange} />
+      <TextInput
+        value={filters.search}
+        onChange={handleSearchChange}
+        placeholder="Search characters"
+      />
       <SelectInput
         placeholder="Select gender"
         options={genderOptions}
-        selectedValue={selectedValue}
-        handleSelectChange={handleSelectChange}
-        handleShowDropdown={handleShowDropdown}
-        isDropdownShown={isDropdownShown}
-        handleDropdownHide={handleDropdownHide}
+        selectedValue={filters.gender}
+        handleSelectChange={(value) => handleFilterChange("gender", value)}
+        handleShowDropdown={handleShowGenderDropdown}
+        isDropdownShown={dropdownVisibility.gender}
+        handleDropdownHide={handleHideGenderDropdown}
       />
       <SelectInput
         placeholder="Select status"
         options={statusOptions}
-        selectedValue={selectedValue}
-        handleSelectChange={handleSelectChange}
-        handleShowDropdown={handleShowDropdown}
-        isDropdownShown={isDropdownShown}
-        handleDropdownHide={handleDropdownHide}
+        selectedValue={filters.status}
+        handleSelectChange={(value) => handleFilterChange("status", value)}
+        handleShowDropdown={handleShowStatusDropdown}
+        isDropdownShown={dropdownVisibility.status}
+        handleDropdownHide={handleHideStatusDropdown}
       />
       <SelectInput
         placeholder="Select species"
         options={speciesOptions}
-        selectedValue={selectedValue}
-        handleSelectChange={handleSelectChange}
-        handleShowDropdown={handleShowDropdown}
-        isDropdownShown={isDropdownShown}
-        handleDropdownHide={handleDropdownHide}
+        selectedValue={filters.species}
+        handleSelectChange={(value) => handleFilterChange("species", value)}
+        handleShowDropdown={handleShowSpeciesDropdown}
+        isDropdownShown={dropdownVisibility.species}
+        handleDropdownHide={handleHideSpeciesDropdown}
       />
     </div>
   );

@@ -13,7 +13,7 @@
   .header {
 
     .title {
-      font-size: #fontSizes[f30];
+      font-size: #fontSizes[f20];
       font-weight: bold;
       text-transform: uppercase;
 
@@ -23,10 +23,12 @@
 
   .body {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 20px;
 
     .imageWrapper {
-      width: 150px;
+      width: 50px;
       aspect-ratio: 1 / 1;
       overflow: hidden;
       border-radius: #borderRadius[rCircle];
@@ -39,6 +41,8 @@
     }
 
     .characterInfo {
+      display: flex;
+      gap: 10px;
 
       .info {
         display: flex;

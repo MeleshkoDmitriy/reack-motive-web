@@ -2,6 +2,8 @@ import { TCharacter } from "@/reack-motive-web/src/types/CharacterTypes";
 import { FC } from "react";
 import styles from "./CardDefault.module.less";
 import { Indicator } from "../../../components";
+import { getFormattedDate } from "@/reack-motive-web/src/utils/getFormattedDate";
+import { LikeButton } from "../../shared/buttons/like-button/LikeButton";
 
 interface CardDefaultProps {
   character: TCharacter;
@@ -36,9 +38,8 @@ export const CardDefault: FC<CardDefaultProps> = ({ character }) => {
             <span>{character.gender}</span>
           </p>
         </div>
-      </div>
-      <div className={styles.footer}>
-        <p>{character.created}</p>
+        <p>Created: {getFormattedDate(character.created)}</p>
+        <LikeButton isLiked={false} />
       </div>
     </div>
   );

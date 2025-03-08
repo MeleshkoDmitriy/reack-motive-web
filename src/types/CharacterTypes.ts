@@ -16,10 +16,11 @@ interface ILocation {
 }
 
 export type TCharacterSpecies = "Human" | "Humanoid" | "Alien" | "unknown";
-export type TFilterCharacterSpecies = TCharacterSpecies | "all";
+export type TFilterCharacterSpecies = TCharacterSpecies | "All";
 export type TCharacterStatus = "Alive" | "Dead" | "unknown";
-export type TFilterCharacterStatus = TCharacterStatus | "all";
+export type TFilterCharacterStatus = TCharacterStatus | "All";
 export type TCharacterGender = "Male" | "Female" | "Genderless" | "unknown";
+export type TFilterCharacterGender = TCharacterGender | "All";
 
 export type TCharacter = {
   id: number;
