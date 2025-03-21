@@ -1,0 +1,16 @@
+@import '../../../styles/index.less';
+
+.button:extend(.pagination-button-template) {
+  cursor: pointer;
+
+  &.active {
+    background-color: #colors[white];
+    color: #colors[primary];
+    border: 2px solid #colors[primary];
+  }
+  
+  &:hover {
+    background-color: #colors[secondary];
+    color: #colors[primary];
+  }
+}

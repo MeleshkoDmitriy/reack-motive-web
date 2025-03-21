@@ -1,16 +1,20 @@
-import { FC } from "react"
-import styles from './Pagination.module.less';
+import { FC } from "react";
+import styles from "./Pagination.module.less";
 import { PaginationController } from "./pagination-controller/PaginationController";
+import { IInfo } from "../../types/CharacterTypes";
+import { PaginationList } from "./pagination-list/PaginationList";
 
 interface PaginationProps {
-  page: number;
+  currentPage: number;
+  pagesInfo: IInfo;
 }
 
-export const Pagination: FC<PaginationProps> = ({ page }) => {
+export const Pagination: FC<PaginationProps> = ({ currentPage, pagesInfo }) => {
   return (
     <section className={styles.pagination}>
-      <PaginationController direction="prev" />
-      <PaginationController direction="next" />
+      <PaginationController direction="prev" pagesInfo={pagesInfo} />
+      <PaginationList currentPage={currentPage} pagesQuantity={pagesInfo.pages} />
+      <PaginationController direction="next" pagesInfo={pagesInfo} />
     </section>
-  )
-}
+  );
+};

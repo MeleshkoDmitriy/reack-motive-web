@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { QueryKeys } from "../constants/queryKeys";
 import { getCharactersWithParams } from "../services/charactersService";
 import { useState } from "react";
 
@@ -7,15 +6,33 @@ import { useState } from "react";
 // }
 
 export const useCharacters = () => {
-  const [page] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const query = useQuery({
-    queryKey: [QueryKeys.CHARACTERS],
-    queryFn: () => getCharactersWithParams(page),
+    queryKey: ["characters", currentPage],
+    queryFn: () => getCharactersWithParams(currentPage),
   });
+
+  const handleNextPageChange = () => {
+    if (query.data?.info.next) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPageChange = () => {
+    if (query.data?.info.prev) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  // console.log("currentPage", currentPage);
+  // console.log("query.data?.info", query.data?.info);
+  // console.log("query.data?.results", query.data?.results);
 
   return {
     query,
-    page,
+    currentPage,
+    handleNextPageChange,
+    handlePreviousPageChange,
   };
 };

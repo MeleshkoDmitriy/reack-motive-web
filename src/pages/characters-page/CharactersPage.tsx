@@ -5,24 +5,27 @@ import { LoadingSpinner } from "../../components/shared/spinners/loading-spinner
 import { Pagination } from "../../components/pagination/Pagination";
 
 export const CharactersPage = () => {
-  const { query, page } = useCharacters();
-  const { data, isError, isLoading, isFetching } = query;
+  const { query, currentPage } = useCharacters();
+  // const { data, isError, isLoading, isFetching } = query;
 
-  // console.log("data", data);
+  console.log("CharactersPage---query.data?.results", query.data?.results);
+  console.log("currentPage", currentPage);
+  console.log("query", query);
 
-  if (isError) {
+
+  if (query.isError) {
     return <div>Error fetching data</div>;
   }
 
-  if (isLoading || isFetching) {
+  if (query.isLoading || query.isFetching) {
     <LoadingSpinner isLoading={true} />;
   }
 
   return (
     <div className={styles.page}>
       <Filter variant="default" />
-      {data && <List variant="flex" entities={data.results} />}
-      {data && <Pagination page={page} />}
+      {query.data && <List variant="flex" entities={query.data?.results} />}
+      {query.data && <Pagination currentPage={currentPage} pagesInfo={query.data.info} />}
     </div>
   );
 };
