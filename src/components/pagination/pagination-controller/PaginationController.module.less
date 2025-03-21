@@ -1,0 +1,18 @@
+@import "../../../styles/index.less";
+
+.controller:extend(.pagination-button-template) {
+  .icon {
+    &.prev {
+      transform: translateX();
+    }
+
+    &.next {
+    }
+  }
+
+  &:hover,
+  &:active {
+    background-color: #colors[secondary];
+    color: #colors[primary];
+  }
+}

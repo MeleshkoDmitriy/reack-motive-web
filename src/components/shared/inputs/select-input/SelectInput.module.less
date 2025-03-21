@@ -1,0 +1,64 @@
+@import "../../../../styles/index.less";
+
+.wrapper {
+  background-color: #colors[primary];
+  border-radius: #borderRadius[r10];
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  cursor: pointer;
+
+  .value {
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    &Title,
+    &Icon {
+      color: #colors[white];
+      font-size: #fontSizes[f20];
+    }
+
+    &Title {
+      &.placeholder {
+        color: #colors[secondary];
+      }
+    }
+
+    &Icon {
+      transition: #transitions[fast];
+
+      &.down {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .dropdown {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(100px);
+    transition: #transitions[fast];
+    background-color: #colors[primary];
+    min-width: 100px;
+    padding: 10px 20px;
+    border-radius: #borderRadius[r10];
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &.shownDropdown {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(60px);
+    }
+  }
+}

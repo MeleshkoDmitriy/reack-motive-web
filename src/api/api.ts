@@ -1,3 +1,2 @@
-export const RICK_MORTY_API_URL = "https://rickandmortyapi.com/api/character";
-export const FAVORITES_API_URL =
-  "https://reack-motive-back.vercel.app/api/v1/favorites";
+export const RICK_MORTY_API_URL = import.meta.env.VITE_RICK_MORTY_API_URL;
+export const FAVORITES_API_URL = import.meta.env.VITE_FAVORITES_API_URL;

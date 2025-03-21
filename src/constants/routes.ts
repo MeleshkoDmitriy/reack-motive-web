@@ -1,4 +1,5 @@
-export enum Routes {
-  CHARACTERS = "/",
+export const enum Routes {
+  HOME = "/",
+  CHARACTERS = "/characters",
   FAVORITES = "/favorites",
-}
+};

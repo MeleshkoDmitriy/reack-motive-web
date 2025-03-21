@@ -1,0 +1,58 @@
+@import "../../../../styles/index.less";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: #borderRadius[r10];
+  background-color: #colors[primary];
+  padding: 10px 20px;
+  cursor: pointer;
+  overflow: hidden;
+
+  .searchIcon,
+  .closeButton .closeIcon,
+  .input {
+    font-size: #fontSizes[f20];
+    color: #colors[white];
+  }
+
+  // .searchIcon {
+  // }
+
+  .input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    font-size: #fontSizes[f20];
+    outline: none;
+    background-color: #colors[primary];
+
+    &::placeholder {
+      color: #colors[secondary];
+    }
+  }
+
+  .closeButton {
+    transition: #transitions[fast];
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+
+      .closeIcon {
+        transform: translateX(0);
+      }
+    }
+
+    .closeIcon {
+      transition: #transitions[fast];
+      transform: translateX(20px);
+    }
+  }
+}

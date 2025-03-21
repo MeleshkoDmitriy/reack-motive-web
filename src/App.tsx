@@ -1,14 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { FavoritesPage } from "./pages/favorites-page/FavoritesPage";
 import { Routes } from "./constants/routes";
-import { CharactersPage } from "./pages/characters-page/CharactersPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Layout } from "./components/layout-components/Layout/Layout";
+
+import { HomePage, CharactersPage, FavoritesPage } from './pages'
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
+      {
+        path: Routes.HOME,
+        element: <HomePage />
+      },
       {
         path: Routes.CHARACTERS,
         element: <CharactersPage />,

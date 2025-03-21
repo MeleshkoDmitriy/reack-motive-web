@@ -1,14 +1,31 @@
-import { useQuery } from "@tanstack/react-query";
 import styles from "./CharactersPage.module.less";
-import { RICK_MORTY_API_URL } from "../../api/api";
-import { QueryKeys } from "../../constants/queryKeys";
+import { useCharacters } from "../../hooks/useCharacters";
+import { List, Filter } from "../../components";
+import { LoadingSpinner } from "../../components/shared/spinners/loading-spinner/LoadingSpinner";
+import { Pagination } from "../../components/pagination/Pagination";
 
 export const CharactersPage = () => {
-  const { data } = useQuery({
-    queryKey: [QueryKeys.CHARACTERS],
-    queryFn: () => fetch(RICK_MORTY_API_URL).then((res) => res.json()),
-  });
+  const { query, currentPage } = useCharacters();
+  // const { data, isError, isLoading, isFetching } = query;
 
-  console.log("data", data);
-  return <div className={styles.page}>{data && data.results[0].name}</div>;
+  console.log("CharactersPage---query.data?.results", query.data?.results);
+  console.log("currentPage", currentPage);
+  console.log("query", query);
+
+
+  if (query.isError) {
+    return <div>Error fetching data</div>;
+  }
+
+  if (query.isLoading || query.isFetching) {
+    <LoadingSpinner isLoading={true} />;
+  }
+
+  return (
+    <div className={styles.page}>
+      <Filter variant="default" />
+      {query.data && <List variant="flex" entities={query.data?.results} />}
+      {query.data && <Pagination currentPage={currentPage} pagesInfo={query.data.info} />}
+    </div>
+  );
 };
